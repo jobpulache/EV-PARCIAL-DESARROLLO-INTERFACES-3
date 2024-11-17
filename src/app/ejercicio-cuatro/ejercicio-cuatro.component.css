@@ -1,0 +1,18 @@
+h1 {
+    color: #007bff;
+    text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+  
