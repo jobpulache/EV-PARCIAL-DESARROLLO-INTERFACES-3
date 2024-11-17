@@ -7,19 +7,17 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './ejercicio-cuatro.component.html',
-  styleUrl: './ejercicio-cuatro.component.css'
+  styleUrls: ['./ejercicio-cuatro.component.css']
 })
 export class EjercicioCuatroComponent {
   numerosPares: number[] = [];
+
   constructor() {
     this.obtenerNumerosPares();
   }
 
-  obtenerNumerosPares() {
-    for (let num = 20; num >= 10; num--) {
-      if (num % 2 === 0)
-        this.numerosPares.push(num)
-    }
+  private obtenerNumerosPares(): void {
+    this.numerosPares = Array.from({ length: 11 }, (_, i) => 20 - i)
+      .filter(num => num % 2 === 0); 
   }
-
 }
