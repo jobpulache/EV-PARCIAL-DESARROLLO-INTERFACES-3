@@ -1,16 +1,17 @@
 <div>
-    <label for="anio"> Fecha nacimiento</label>
+    <label for="anio">Año de Nacimiento:</label>
     <input
-    id="anio";
-    type="number";
-    [(ngModel)]="anioNacimiento"
-    name="anio"
-    placeholder="Ingrese su año de nacimiento"   
-    >
-</div>
-<div>
-    <button (click)="verificarDni()">Verificar DNI</button>
-</div>
-<div *ngIf="mensaje">
-    <p>{{mensaje}}</p>
-</div>
+      id="anio"
+      type="datetime"
+      [(ngModel)]="anioNacimiento"
+      name="anio"
+      placeholder="Ingrese su año de nacimiento"
+    />
+  </div>
+  <div>
+    <button (click)="verificarDNI()">Verificar</button>
+  </div>
+  <div *ngIf="mensaje">
+    <p>{{ mensaje }}</p>
+  </div>
+  

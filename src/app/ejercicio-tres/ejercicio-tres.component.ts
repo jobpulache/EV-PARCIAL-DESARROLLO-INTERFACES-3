@@ -10,17 +10,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './ejercicio-tres.component.css'
 })
 export class EjercicioTresComponent {
-  anioNacimiento: number | null = null;
-  mensaje: string = '';
-  verificarDni(): void {
-    const anioActualy = new Date().getFullYear();
-    const edad = anioActualy - (this.anioNacimiento || 0);
+  anioNacimiento: number | null = null; 
+  mensaje: string = ''; 
+
+  verificarDNI(): void {
+    const anioActual = new Date().getFullYear(); 
+    const edad = anioActual - (this.anioNacimiento || 0);
+
     if (this.anioNacimiento === null || isNaN(this.anioNacimiento)) {
-      this.mensaje = 'Igrese un número valido';
-    }else if(edad >=18){
-      this.mensaje = `Ve a sacar DNI. Tienes ${edad}`
-    }else{
-      this.mensaje = `No necesitas sacar DNI. Todavia tienes ${edad}`
+      this.mensaje = 'Por favor, ingrese un año válido.';
+    } else if (edad >= 18) {
+      this.mensaje = `Tiene ${edad} años. Debe sacar su DNI.`;
+    } else {
+      this.mensaje = `Tiene ${edad} años. No necesita DNI todavía.`;
     }
   }
 }
