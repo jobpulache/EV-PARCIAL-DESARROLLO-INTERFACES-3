@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
 @Component({
   selector: 'app-ejercicio-uno',
   standalone: true,
@@ -18,13 +16,11 @@ export class EjercicioUnoComponent {
     descuentoAplicado: false,
     totalFinal: 0,
   };
-
   calcularDescuento(): void {
     this.compra.total = this.compra.cantidad * this.compra.precio;
-
     if (this.compra.total > 200) {
       this.compra.descuentoAplicado = true;
-      this.compra.totalFinal = this.compra.total * 0.8; // Aplica 20% de descuento
+      this.compra.totalFinal = this.compra.total * 0.8; 
     } else {
       this.compra.descuentoAplicado = false;
       this.compra.totalFinal = this.compra.total;
