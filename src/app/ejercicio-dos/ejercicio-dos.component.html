@@ -1,0 +1,19 @@
+<div>
+    <label for="monto">Monto del prestamo</label>
+    <input
+    id="monto"
+    type="number";
+    [(ngModel)]="montoPrestamo"
+    name="monto"
+    placeholder="Ingrese mono del prestamo"
+    >
+</div>
+<div>
+    <button (click)="calcularPrestamo()">Calcular</button>
+</div>
+<div *ngIf="cuotas">
+    <p>Número de cuotas: {{cuotas}}</p>
+    <p>Tasa interes: {{tasaInteres * 100}}%</p>
+    <p>Monyo total con interes: {{montoTotal | currency}}</p>
+    <p>Monto por cuota: {{montoPorCuota | currency}}</p>
+</div>

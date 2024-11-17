@@ -1,1 +1,33 @@
-<p>ejercicio-uno works!</p>
+<div class="container">
+  <h1>Calculadora de Descuento</h1>
+
+  <form (ngSubmit)="calcularDescuento()">
+    <label for="cantidad">Cantidad:</label>
+    <input
+      id="cantidad"
+      type="number"
+      [(ngModel)]="compra.cantidad"
+      name="cantidad"
+      required
+    />
+
+    <label for="precio">Precio por unidad:</label>
+    <input
+      id="precio"
+      type="number"
+      [(ngModel)]="compra.precio"
+      name="precio"
+      required
+    />
+
+    <button type="button" (click)="calcularDescuento()">Calcular</button>
+  </form>
+
+  <div *ngIf="compra.total > 0">
+    <p>Total antes del descuento: {{ compra.total | currency }}</p>
+    <p *ngIf="compra.descuentoAplicado">
+      Descuento aplicado: 20%
+    </p>
+    <p>Total final: {{ compra.totalFinal | currency }}</p>
+  </div>
+</div>
