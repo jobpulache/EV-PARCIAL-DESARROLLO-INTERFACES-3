@@ -16,19 +16,22 @@ export class EjercicioDosComponent {
   tasaInteres: number = 0;
   montoTotal: number = 0;
   montoPorCuota: number = 0;
+  private determinarCuotas(monto: number){
+    if(monto > 5000) return 3 
+    if(monto <1000)return 1
+    if(monto>=2000 && monto <=3000) return 2
+    return 5 ;
+  }
+  private determinarTasaInteres(monto:number):number{
+    return monto <4000? 0.12 : 0.10;
+  }
+
 
   calcularPrestamo(): void {
-    if (this.montoPrestamo > 5000) {
-      this.cuotas = 3;
-    } else if (this.montoPrestamo < 1000) {
-      this.cuotas = 1;
-    } else if (this.montoPrestamo >= 2000 && this.montoPrestamo <= 3000) {
-      this.cuotas = 2;
-    } else {
-      this.cuotas = 5;
-    }
-
-    this.tasaInteres = this.montoPrestamo < 4000 ? 0.12 : 0.10;
+   this.cuotas = this.determinarCuotas(this.montoPrestamo)
+   this.tasaInteres = this.determinarTasaInteres(this.montoPrestamo)
+    
+ 
 
     this.montoTotal = this.montoPrestamo * (1 + this.tasaInteres);
     this.montoPorCuota = this.montoTotal / this.cuotas;

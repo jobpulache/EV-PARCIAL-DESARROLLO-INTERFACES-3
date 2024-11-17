@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-ejercicio-uno',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './ejercicio-uno.component.html',
   styleUrl: './ejercicio-uno.component.css'
 })
@@ -17,14 +17,10 @@ export class EjercicioUnoComponent {
     totalFinal: 0,
   };
   calcularDescuento(): void {
-    this.compra.total = this.compra.cantidad * this.compra.precio;
-    if (this.compra.total > 200) {
-      this.compra.descuentoAplicado = true;
-      this.compra.totalFinal = this.compra.total * 0.8; 
-    } else {
-      this.compra.descuentoAplicado = false;
-      this.compra.totalFinal = this.compra.total;
-    }
+    const total = this.compra.cantidad * this.compra.precio;
+    this.compra.total= total;
+    this.compra.descuentoAplicado = total > 200;
+    this.compra.totalFinal = this.compra.descuentoAplicado ? total*0.8 : total;
   }
 }
 interface Compra {
