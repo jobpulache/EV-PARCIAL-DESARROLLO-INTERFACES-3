@@ -1,1 +1,16 @@
-<p>ejercicio-tres works!</p>
+<div>
+    <label for="anio"> Fecha nacimiento</label>
+    <input
+    id="anio";
+    type="number";
+    [(ngModel)]="anioNacimiento"
+    name="anio"
+    placeholder="Ingrese su año de nacimiento"   
+    >
+</div>
+<div>
+    <button (click)="verificarDni()">Verificar DNI</button>
+</div>
+<div *ngIf="mensaje">
+    <p>{{mensaje}}</p>
+</div>
