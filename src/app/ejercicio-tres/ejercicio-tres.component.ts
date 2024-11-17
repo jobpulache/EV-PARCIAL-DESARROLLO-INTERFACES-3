@@ -7,22 +7,31 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './ejercicio-tres.component.html',
-  styleUrl: './ejercicio-tres.component.css'
+  styleUrls: ['./ejercicio-tres.component.css']
 })
 export class EjercicioTresComponent {
-  anioNacimiento: number | null = null; 
-  mensaje: string = ''; 
+  anioNacimiento: number | null = null;
+  mensaje: string = '';
+
+  private validarAnioNacimiento(anio: number | null): boolean {
+    return anio !== null && !isNaN(anio) && anio > 1900 && anio <= new Date().getFullYear();
+  }
+
+  private calcularEdad(anioNacimiento: number): number {
+    const anioActual = new Date().getFullYear();
+    return anioActual - anioNacimiento;
+  }
 
   verificarDNI(): void {
-    const anioActual = new Date().getFullYear(); 
-    const edad = anioActual - (this.anioNacimiento || 0);
-
-    if (this.anioNacimiento === null || isNaN(this.anioNacimiento)) {
-      this.mensaje = 'Por favor, ingrese un año válido.';
-    } else if (edad >= 18) {
-      this.mensaje = `Tiene ${edad} años. Debe sacar su DNI.`;
-    } else {
-      this.mensaje = `Tiene ${edad} años. No necesita DNI todavía.`;
+    if (!this.validarAnioNacimiento(this.anioNacimiento)) {
+      this.mensaje = 'Por favor, ingrese un año de nacimiento válido.';
+      return;
     }
+
+    const edad = this.calcularEdad(this.anioNacimiento as number);
+
+    this.mensaje = edad >= 18 
+      ? `Tiene ${edad} años. Debe sacar su DNI.` 
+      : `Tiene ${edad} años. No necesita DNI todavía.`;
   }
 }
